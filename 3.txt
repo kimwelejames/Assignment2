@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class ArrayOperations {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int[] arr = new int[15];
+
+        // Taking input from user and storing in array
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("Enter value #" + (i+1) + ": ");
+            arr[i] = scanner.nextInt();
+        }
+
+        // Printing values stored in array
+        System.out.println("\nValues stored in array:");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        
+        System.out.print("\nEnter a number to search in the array: ");
+        int num = scanner.nextInt();
+        boolean found = false;
+        int index = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                found = true;
+                index = i;
+                break;
+            }
+        }
+        if (found) {
+            System.out.println("The number found at index " + index);
+        } else {
+            System.out.println("Number not found in this array.");
+        }
+
+      
+        int[] reverseArr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            reverseArr[arr.length - i - 1] = arr[i];
+        }
+
+       
+        System.out.println("\nValues stored in reverse order:");
+        for (int i = 0; i < reverseArr.length; i++) {
+            System.out.print(reverseArr[i] + " ");
+        }
+
+        
+        int sum = 0;
+        int product = 1;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            product *= arr[i];
+        }
+
+       
+        System.out.println("\nSum of elements in array: " + sum);
+        System.out.println("Product of elements in array: " + product);
+
+        scanner.close();
+    }
+}

@@ -1,0 +1,54 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class PalindromeChecker implements ActionListener {
+    
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel inputLabel, resultLabel;
+    private JTextField inputField;
+    private JButton checkButton;
+
+    public PalindromeChecker() {
+        frame = new JFrame("Palindrome Checker");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        panel = new JPanel(new GridLayout(3, 1));
+        inputLabel = new JLabel("Enter a number:");
+        inputField = new JTextField();
+        checkButton = new JButton("Check");
+        checkButton.addActionListener(this);
+        resultLabel = new JLabel();
+
+        panel.add(inputLabel);
+        panel.add(inputField);
+        panel.add(checkButton);
+        panel.add(resultLabel);
+
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == checkButton) {
+            String input = inputField.getText();
+            if (isPalindrome(input)) {
+                resultLabel.setText(input + " is a palindrome.");
+            } else {
+                resultLabel.setText(input + " is not a palindrome.");
+            }
+        }
+    }
+
+    public boolean isPalindrome(String input) {
+        String reversedInput = new StringBuilder(input).reverse().toString();
+        return input.equals(reversedInput);
+    }
+
+    public static void main(String[] args) {
+        new PalindromeChecker();
+    }
+}

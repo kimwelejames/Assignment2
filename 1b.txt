@@ -1,0 +1,18 @@
+public class Fibonacci {
+    
+    public static void main(String[] args) {
+        int maxNumber = 4000000;
+        int previousNumber = 1;
+        int currentNumber = 2;
+        int sum = 2;
+        while (currentNumber <= maxNumber) {
+            int nextNumber = previousNumber + currentNumber;
+            if (nextNumber % 2 == 0) {
+                sum += nextNumber;
+            }
+            previousNumber = currentNumber;
+            currentNumber = nextNumber;
+        }
+        System.out.println("The sum of even-valued terms in the Fibonacci sequence up to 4 million is: " + sum);
+    }
+}
